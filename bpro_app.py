@@ -8,7 +8,7 @@ st.set_page_config(page_title="Cohort Map", layout="wide")
 st.title("Cohort Map")
 
 # --- GitHub raw CSV URL ---
-RAW_CSV_URL = "https://raw.githubusercontent.com/username/repo/branch/path/to/your.csv"
+RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/main/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
 
 # --- Load data from GitHub ---
 @st.cache_data
