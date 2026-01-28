@@ -7,6 +7,30 @@ from streamlit_folium import st_folium
 st.set_page_config(page_title="Cohort Map", layout="wide")
 st.title("Cohort Map")
 
+PASSWORD = "lifefindsaway"  # change this
+
+def check_password():
+    if "authenticated" not in st.session_state:
+        st.session_state.authenticated = False
+
+    if not st.session_state.authenticated:
+        password = st.text_input("Enter password", type="password")
+
+        if password:
+            if password == PASSWORD:
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Incorrect password")
+        return False
+
+    return True
+
+
+if check_password():
+    st.success("Welcome 🎉")
+    st.write("Your app content goes here")
+
 # --- GitHub raw CSV URL ---
 RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/main/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
 
