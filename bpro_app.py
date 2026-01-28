@@ -7,7 +7,7 @@ from streamlit_folium import st_folium
 st.set_page_config(page_title="Cohort Map", layout="wide")
 st.title("Cohort Map")
 
-PASSWORD = "lifefindsaway"  # change this
+PASSWORD = "livingnetwork"  # change this
 
 def check_password():
     if "authenticated" not in st.session_state:
