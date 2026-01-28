@@ -81,7 +81,7 @@ if check_password():
     
         for _, r in df.iterrows():
             name = f"{r['First Name']} {r['Last Name']}".strip()
-            birthday = r.get("Birthday", "").strip()
+            birthday = r.get("Cohort Info", "").strip()
             city = r.get("City", "").strip()
             state = r.get("State", "").strip()
             country = r.get("Country", "").strip()
@@ -93,7 +93,7 @@ if check_password():
     
             parts = [f"<b>{name}</b>"]
             if birthday:
-                parts.append(f"🎂 {birthday}")
+                parts.append(f"Cohort: {birthday}")
             loc_bits = " • ".join([b for b in [city, state, country] if b])
             if loc_bits:
                 parts.append(f"📍 {loc_bits}")
