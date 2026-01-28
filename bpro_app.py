@@ -4,8 +4,14 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 
+PASSWORD = "livingnetwork"  # change this
+
+
+
 st.set_page_config(page_title="AirBnBpro", layout="wide")
+
 st.title("AirBnBpro")
+
 st.markdown("""
 **Welcome to AirBnBPro**  
 *Where Biomimicry Pros Find Their People… Anywhere in the World.*
@@ -20,14 +26,13 @@ Would you like to meet them?
 - Moving to a new country?  
 - Looking for a collaborator, a co-conspirator, or just someone who speaks fluent *“nature as mentor”*?
 
-To protect our privacy, you’ll need a password to log in.
+🔒 To protect our privacy, you’ll need a password to continue.
 
-🔑 **You can find the password** in the WhatsApp **“All cohort”** group  
+🔑 You can find the password in the WhatsApp **“All cohort”** group  
 or by contacting **jake.hopkins@gmail.com**.
 """)
 
-PASSWORD = "livingnetwork"  # change this
-
+PASSWORD = "livingnetwork"  # consider moving to an env var
 
 
 def check_password():
@@ -46,6 +51,9 @@ def check_password():
         return False
 
     return True
+
+
+if check_password():
 
 
 if check_password():
