@@ -156,6 +156,8 @@ if check_password():
                 tooltip=name or None,
                 icon=folium.Icon(color="blue", icon="info-sign")
             ).add_to(m)
+    
+        st_folium(m, width=None, height=650)
 
         # --- Dropdown filter for Themes ---
         theme_col = "Themes"
@@ -164,9 +166,7 @@ if check_password():
         
         if selected != "All":
             df = df[df[theme_col] == selected]
-    
-        st_folium(m, width=None, height=650)
-        
+            
         st.markdown("""
 
         🔎 **Want more cohort details?**  
