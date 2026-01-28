@@ -29,7 +29,7 @@ def check_password():
 
 if check_password():
     st.success("Welcome 🎉")
-    st.write("Your app content goes here")
+    st.write("This is an application for mapping BPros across the world.")
 
     # --- GitHub raw CSV URL ---
     RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/main/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
@@ -93,7 +93,7 @@ if check_password():
     
             parts = [f"<b>{name}</b>"]
             if birthday:
-                parts.append(f"Cohort: {birthday}")
+                parts.append(f"Cohort Number: {birthday}")
             loc_bits = " • ".join([b for b in [city, state, country] if b])
             if loc_bits:
                 parts.append(f"📍 {loc_bits}")
