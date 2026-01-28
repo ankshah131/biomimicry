@@ -69,6 +69,7 @@ if check_password():
     Think of it as an **informal global mycelial network** of brilliant, curious, nature-inspired minds.
     
     **AirBnBPro: Find your people.**
+    Want to be listed? Please [**sign up to help us build our network**](https://docs.google.com/forms/d/e/1FAIpQLScieyGrcqL_lE5ZPQ5rhfU9Ceivle24a7ks-kijg0xZjHmkuA/viewform).
     """)
     
     # --- GitHub raw CSV URL ---
@@ -164,3 +165,11 @@ if check_password():
             ).add_to(m)
     
         st_folium(m, width=None, height=650)
+        
+        st.markdown("""
+
+        🔎 **Want more cohort details?**  
+        
+        You can also explore cohort information on **Hugo Araujo’s** separately maintained  
+        [**7Vortex site**](https://www.7vortex.com/ecosystems/66b05a45-32cd-4d15-95fe-ffde57a26379/view).
+        """)
