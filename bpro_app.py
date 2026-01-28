@@ -60,6 +60,8 @@ if check_password():
     When you connect, it doesn’t have to be formal.  
     This is **human, warm, and real**.
     
+    Want to be listed? Please [**sign up to help us build our network**](https://docs.google.com/forms/d/e/1FAIpQLScieyGrcqL_lE5ZPQ5rhfU9Ceivle24a7ks-kijg0xZjHmkuA/viewform).
+    
     ### Meet up for:
     - ☕ Coffee  
     - 🍺 A beer  
@@ -69,7 +71,6 @@ if check_password():
     Think of it as an **informal global mycelial network** of brilliant, curious, nature-inspired minds.
     
     **AirBnBPro: Find your people.**
-    Want to be listed? Please [**sign up to help us build our network**](https://docs.google.com/forms/d/e/1FAIpQLScieyGrcqL_lE5ZPQ5rhfU9Ceivle24a7ks-kijg0xZjHmkuA/viewform).
     """)
     
     # --- GitHub raw CSV URL ---
@@ -90,14 +91,6 @@ if check_password():
     df["Latitude"] = pd.to_numeric(df["Latitude"].astype(str).map(fix_minus), errors="coerce")
     df["Longitude"] = pd.to_numeric(df["Longitude"].astype(str).map(fix_minus), errors="coerce")
     df = df.dropna(subset=["Latitude", "Longitude"])
-    
-    # --- Dropdown filter for Themes ---
-    theme_col = "Themes"
-    themes = sorted([t for t in df.get(theme_col, "").astype(str).unique() if t.strip() != ""])
-    selected = st.selectbox("Filter by Theme", ["All"] + themes)
-    
-    if selected != "All":
-        df = df[df[theme_col] == selected]
     
     # --- Helper functions ---
     def linkify(text: str, url: str) -> str:
@@ -163,6 +156,14 @@ if check_password():
                 tooltip=name or None,
                 icon=folium.Icon(color="blue", icon="info-sign")
             ).add_to(m)
+
+        # --- Dropdown filter for Themes ---
+        theme_col = "Themes"
+        themes = sorted([t for t in df.get(theme_col, "").astype(str).unique() if t.strip() != ""])
+        selected = st.selectbox("Filter by Theme", ["All"] + themes)
+        
+        if selected != "All":
+            df = df[df[theme_col] == selected]
     
         st_folium(m, width=None, height=650)
         
