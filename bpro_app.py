@@ -6,8 +6,29 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="AirBnBpro", layout="wide")
 st.title("AirBnBpro")
+st.markdown("""
+**Welcome to AirBnBPro**  
+*Where Biomimicry Pros Find Their People… Anywhere in the World.*
+
+Out of billions of humans, there are only about **140 certified BPros** on the planet.  
+Would you like to meet them?
+
+**AirBnBPro** is a private, password-protected website with one simple purpose:  
+👉 **Help BPros find other BPros.**
+
+- Traveling to a new city?  
+- Moving to a new country?  
+- Looking for a collaborator, a co-conspirator, or just someone who speaks fluent *“nature as mentor”*?
+
+To protect our privacy, you’ll need a password to log in.
+
+🔑 **You can find the password** in the WhatsApp **“All cohort”** group  
+or by contacting **jake.hopkins@gmail.com**.
+""")
 
 PASSWORD = "livingnetwork"  # change this
+
+
 
 def check_password():
     if "authenticated" not in st.session_state:
