@@ -4,8 +4,8 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 
-st.set_page_config(page_title="Cohort Map", layout="wide")
-st.title("Cohort Map")
+st.set_page_config(page_title="AirBnBpro", layout="wide")
+st.title("AirBnBpro")
 
 PASSWORD = "livingnetwork"  # change this
 
@@ -81,7 +81,7 @@ if check_password():
     
         for _, r in df.iterrows():
             name = f"{r['First Name']} {r['Last Name']}".strip()
-            birthday = r.get("Cohort Info", "").strip()
+            birthday = r.get("Cohort Number", "").strip()
             city = r.get("City", "").strip()
             state = r.get("State", "").strip()
             country = r.get("Country", "").strip()
