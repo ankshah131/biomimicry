@@ -81,7 +81,7 @@ if check_password():
     
         for _, r in df.iterrows():
             name = f"{r['First Name']} {r['Last Name']}".strip()
-            birthday = r.get("Cohort Number", "").strip()
+            birthday = r.get("Cohort", "").strip()
             city = r.get("City", "").strip()
             state = r.get("State", "").strip()
             country = r.get("Country", "").strip()
