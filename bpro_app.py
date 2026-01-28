@@ -32,7 +32,7 @@ if check_password():
     st.write("This is an application for mapping BPros across the world.")
 
     # --- GitHub raw CSV URL ---
-    RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/main/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
+    RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/a3ce471a4d58713995ccf0645024af1824798af5/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
     
     # --- Load data from GitHub ---
     @st.cache_data
