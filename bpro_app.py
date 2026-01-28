@@ -51,9 +51,6 @@ def check_password():
 
 
 if check_password():
-
-
-if check_password():
     st.success("Welcome 🎉")
     st.write("This is an application for mapping BPros across the world.")
 
