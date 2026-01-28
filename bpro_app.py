@@ -9,34 +9,31 @@ st.title("AirBnBpro")
 
 PASSWORD = "livingnetwork"  # change this
 
-st.markdown("""
-**Welcome to AirBnBPro**  
-*Where Biomimicry Pros Find Their People… Anywhere in the World.*
-
-Out of billions of humans, there are only about **140 certified BPros** on the planet.  
-Would you like to meet them?
-
-**AirBnBPro** is a private, password-protected website with one simple purpose:  
-👉 **Help BPros find other BPros.**
-
-- Traveling to a new city?  
-- Moving to a new country?  
-- Looking for a collaborator, a co-conspirator, or just someone who speaks fluent *“nature as mentor”*?
-
-🔒 To protect our privacy, you’ll need a password to continue.
-
-🔑 You can find the password in the WhatsApp **“All cohort”** group  
-or by contacting **jake.hopkins@gmail.com**.
-""")
-
-PASSWORD = "livingnetwork"  # consider moving to an env var
-
-
 def check_password():
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
 
     if not st.session_state.authenticated:
+
+        st.markdown("""
+        **Welcome to AirBnBPro**  
+        *Where Biomimicry Pros Find Their People… Anywhere in the World.*
+        
+        Out of billions of humans, there are only about **140 certified BPros** on the planet.  
+        Would you like to meet them?
+        
+        **AirBnBPro** is a private, password-protected website with one simple purpose:  
+        👉 **Help BPros find other BPros.**
+        
+        - Traveling to a new city?  
+        - Moving to a new country?  
+        - Looking for a collaborator, a co-conspirator, or just someone who speaks fluent *“nature as mentor”*?
+        
+        🔒 To protect our privacy, you’ll need a password to continue.
+        
+        🔑 You can find the password in the WhatsApp **“All cohort”** group  
+        or by contacting **jake.hopkins@gmail.com**.
+        """)
         password = st.text_input("Enter password", type="password")
 
         if password:
@@ -52,8 +49,28 @@ def check_password():
 
 if check_password():
     st.success("Welcome 🎉")
-    st.write("This is an application for mapping BPros across the world.")
 
+    st.markdown("""
+    ### Here, you can:
+    - 🌍 Locate fellow BPros around the world  
+    - 🤝 Find collaborators for projects, research, and ventures  
+    - ✈️ Make travel friends who share your lens on life  
+    - 🌱 Build connections in the biomimicry community  
+    
+    When you connect, it doesn’t have to be formal.  
+    This is **human, warm, and real**.
+    
+    ### Meet up for:
+    - ☕ Coffee  
+    - 🍺 A beer  
+    - 🍽️ A meal  
+    - 🛏️ Or even host a fellow BPro passing through your home ecosystem  
+    
+    Think of it as an **informal global mycelial network** of brilliant, curious, nature-inspired minds.
+    
+    **AirBnBPro: Find your people.**
+    """)
+    
     # --- GitHub raw CSV URL ---
     RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/a3ce471a4d58713995ccf0645024af1824798af5/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
     
