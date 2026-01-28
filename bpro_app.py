@@ -4,13 +4,10 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 
-PASSWORD = "livingnetwork"  # change this
-
-
-
 st.set_page_config(page_title="AirBnBpro", layout="wide")
-
 st.title("AirBnBpro")
+
+PASSWORD = "livingnetwork"  # change this
 
 st.markdown("""
 **Welcome to AirBnBPro**  
