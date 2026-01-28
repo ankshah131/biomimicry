@@ -170,6 +170,5 @@ if check_password():
 
         🔎 **Want more cohort details?**  
         
-        You can also explore cohort information on **Hugo Araujo’s** separately maintained  
-        [**7Vortex site**](https://www.7vortex.com/ecosystems/66b05a45-32cd-4d15-95fe-ffde57a26379/view).
+        You can also explore cohort information on **Hugo Araujo’s** separately maintained [**7Vortex site**](https://www.7vortex.com/ecosystems/66b05a45-32cd-4d15-95fe-ffde57a26379/view).
         """)
