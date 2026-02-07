@@ -74,7 +74,7 @@ if check_password():
     """)
     
     # --- GitHub raw CSV URL ---
-    RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/e98a6f735cba65c71a1e7c5f1b5118255d46ab65/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
+    RAW_CSV_URL = "https://raw.githubusercontent.com/ankshah131/biomimicry/025c148d55223448f7ef941214a9349215dda113/BPro%202024-2026%20Cohort%20Info%20-%20BPro%20Capstone.csv"
 
     # --- Load data from GitHub ---
     @st.cache_data
