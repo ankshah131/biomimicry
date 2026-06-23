@@ -105,8 +105,7 @@ if check_password():
             handle = handle[1:]
         return f"https://www.instagram.com/{handle}"
     
-    # --- Build the map ---
-    # --- Dropdown filter for Themes ---
+# --- Dropdown filter for Themes ---
 theme_col = "Themes"
 themes = sorted([t for t in df.get(theme_col, "").astype(str).unique() if t.strip() != ""])
 selected = st.selectbox("Filter by Theme", ["All"] + themes)
@@ -134,11 +133,14 @@ else:
         support = r.get("Support Request from Cohort", "").strip()
 
         parts = [f"<b>{name}</b>"]
+
         if birthday:
             parts.append(f"Cohort Number: {birthday}")
+
         loc_bits = " • ".join([b for b in [city, state, country] if b])
         if loc_bits:
             parts.append(f"📍 {loc_bits}")
+
         if theme:
             parts.append(f"🏷️ <i>{theme}</i>")
 
@@ -147,16 +149,21 @@ else:
             links.append(linkify("LinkedIn", linkedin))
         if ig:
             links.append(linkify("Instagram", ig_to_url(ig)))
+
         if links:
             parts.append(" | ".join(links))
 
         if capstone:
             parts.append(f"<b>Capstone:</b> {capstone}")
+
         if support:
             parts.append(f"<b>Support Request:</b> {support}")
 
         html = "<br>".join(parts)
-        popup = folium.Popup(folium.IFrame(html=html, width=320, height=180), max_width=340)
+        popup = folium.Popup(
+            folium.IFrame(html=html, width=320, height=180),
+            max_width=340
+        )
 
         folium.Marker(
             location=[r["Latitude"], r["Longitude"]],
@@ -167,17 +174,8 @@ else:
 
     st_folium(m, width=None, height=650)
 
-        # --- Dropdown filter for Themes ---
-        theme_col = "Themes"
-        themes = sorted([t for t in df.get(theme_col, "").astype(str).unique() if t.strip() != ""])
-        selected = st.selectbox("Filter by Theme", ["All"] + themes)
-        
-        if selected != "All":
-            df = df[df[theme_col] == selected]
-            
-        st.markdown("""
+st.markdown("""
+🔎 **Want more cohort details?**  
 
-        🔎 **Want more cohort details?**  
-        
-        You can also explore cohort information on **Hugo Araujo’s** separately maintained [**7Vortex site**](https://www.7vortex.com/ecosystems/66b05a45-32cd-4d15-95fe-ffde57a26379/view).
-        """)
+You can also explore cohort information on **Hugo Araujo’s** separately maintained [**7Vortex site**](https://www.7vortex.com/ecosystems/66b05a45-32cd-4d15-95fe-ffde57a26379/view).
+""")
