@@ -32,7 +32,7 @@ def check_password():
         🔒 To protect our privacy, you’ll need a password to continue.
         
         🔑 You can find the password in the WhatsApp **“All cohort”** group  
-        or by contacting **jake.hopkins@gmail.com**.
+        or by contacting **jake.hopkins@gmail.com**. (Jake is a member of cohort 7)
         """)
         password = st.text_input("Enter password", type="password")
 
@@ -60,7 +60,7 @@ if check_password():
     When you connect, it doesn’t have to be formal.  
     This is **human, warm, and real**.
     
-    Want to be listed? Please [**sign up to help us build our network**](https://docs.google.com/forms/d/e/1FAIpQLScieyGrcqL_lE5ZPQ5rhfU9Ceivle24a7ks-kijg0xZjHmkuA/viewform).
+    AirBnBpro only lists BPros who have opted in. You can [**sign up to get listed.**](https://docs.google.com/forms/d/e/1FAIpQLScieyGrcqL_lE5ZPQ5rhfU9Ceivle24a7ks-kijg0xZjHmkuA/viewform).
     
     ### Meet up for:
     - ☕ Coffee  
