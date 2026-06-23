@@ -106,57 +106,66 @@ if check_password():
         return f"https://www.instagram.com/{handle}"
     
     # --- Build the map ---
-    if df.empty:
-        st.warning("No points match this filter.")
-    else:
-        center = [df["Latitude"].mean(), df["Longitude"].mean()]
-        m = folium.Map(location=center, zoom_start=4, tiles="CartoDB positron")
-    
-        for _, r in df.iterrows():
-            name = f"{r['First Name']} {r['Last Name']}".strip()
-            birthday = r.get("Cohort", "").strip()
-            city = r.get("City", "").strip()
-            state = r.get("State", "").strip()
-            country = r.get("Country", "").strip()
-            theme = r.get("Themes", "").strip()
-            linkedin = r.get("LinkedIn Profile", "").strip()
-            ig = r.get("IG Profile", "").strip()
-            capstone = r.get("BPro Capstone Project Topic", "").strip()
-            support = r.get("Support Request from Cohort", "").strip()
-    
-            parts = [f"<b>{name}</b>"]
-            if birthday:
-                parts.append(f"Cohort Number: {birthday}")
-            loc_bits = " • ".join([b for b in [city, state, country] if b])
-            if loc_bits:
-                parts.append(f"📍 {loc_bits}")
-            if theme:
-                parts.append(f"🏷️ <i>{theme}</i>")
-    
-            links = []
-            if linkedin:
-                links.append(linkify("LinkedIn", linkedin))
-            if ig:
-                links.append(linkify("Instagram", ig_to_url(ig)))
-            if links:
-                parts.append(" | ".join(links))
-    
-            if capstone:
-                parts.append(f"<b>Capstone:</b> {capstone}")
-            if support:
-                parts.append(f"<b>Support Request:</b> {support}")
-    
-            html = "<br>".join(parts)
-            popup = folium.Popup(folium.IFrame(html=html, width=320, height=180), max_width=340)
-    
-            folium.Marker(
-                location=[r["Latitude"], r["Longitude"]],
-                popup=popup,
-                tooltip=name or None,
-                icon=folium.Icon(color="blue", icon="info-sign")
-            ).add_to(m)
-    
-        st_folium(m, width=None, height=650)
+    # --- Dropdown filter for Themes ---
+theme_col = "Themes"
+themes = sorted([t for t in df.get(theme_col, "").astype(str).unique() if t.strip() != ""])
+selected = st.selectbox("Filter by Theme", ["All"] + themes)
+
+if selected != "All":
+    df = df[df[theme_col] == selected]
+
+# --- Build the map ---
+if df.empty:
+    st.warning("No points match this filter.")
+else:
+    center = [df["Latitude"].mean(), df["Longitude"].mean()]
+    m = folium.Map(location=center, zoom_start=4, tiles="CartoDB positron")
+
+    for _, r in df.iterrows():
+        name = f"{r['First Name']} {r['Last Name']}".strip()
+        birthday = r.get("Cohort", "").strip()
+        city = r.get("City", "").strip()
+        state = r.get("State", "").strip()
+        country = r.get("Country", "").strip()
+        theme = r.get("Themes", "").strip()
+        linkedin = r.get("LinkedIn Profile", "").strip()
+        ig = r.get("IG Profile", "").strip()
+        capstone = r.get("BPro Capstone Project Topic", "").strip()
+        support = r.get("Support Request from Cohort", "").strip()
+
+        parts = [f"<b>{name}</b>"]
+        if birthday:
+            parts.append(f"Cohort Number: {birthday}")
+        loc_bits = " • ".join([b for b in [city, state, country] if b])
+        if loc_bits:
+            parts.append(f"📍 {loc_bits}")
+        if theme:
+            parts.append(f"🏷️ <i>{theme}</i>")
+
+        links = []
+        if linkedin:
+            links.append(linkify("LinkedIn", linkedin))
+        if ig:
+            links.append(linkify("Instagram", ig_to_url(ig)))
+        if links:
+            parts.append(" | ".join(links))
+
+        if capstone:
+            parts.append(f"<b>Capstone:</b> {capstone}")
+        if support:
+            parts.append(f"<b>Support Request:</b> {support}")
+
+        html = "<br>".join(parts)
+        popup = folium.Popup(folium.IFrame(html=html, width=320, height=180), max_width=340)
+
+        folium.Marker(
+            location=[r["Latitude"], r["Longitude"]],
+            popup=popup,
+            tooltip=name or None,
+            icon=folium.Icon(color="blue", icon="info-sign")
+        ).add_to(m)
+
+    st_folium(m, width=None, height=650)
 
         # --- Dropdown filter for Themes ---
         theme_col = "Themes"
