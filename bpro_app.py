@@ -105,20 +105,20 @@ if check_password():
             handle = handle[1:]
         return f"https://www.instagram.com/{handle}"
     
-# --- Dropdown filter for Themes ---
-theme_col = "Themes"
-themes = sorted([t for t in df.get(theme_col, "").astype(str).unique() if t.strip() != ""])
-selected = st.selectbox("Filter by Theme", ["All"] + themes)
-
-if selected != "All":
-    df = df[df[theme_col] == selected]
-
-# --- Build the map ---
-if df.empty:
-    st.warning("No points match this filter.")
-else:
-    center = [df["Latitude"].mean(), df["Longitude"].mean()]
-    m = folium.Map(location=center, zoom_start=4, tiles="CartoDB positron")
+    # --- Dropdown filter for Themes ---
+    theme_col = "Themes"
+    themes = sorted([t for t in df.get(theme_col, "").astype(str).unique() if t.strip() != ""])
+    selected = st.selectbox("Filter by Theme", ["All"] + themes)
+    
+    if selected != "All":
+        df = df[df[theme_col] == selected]
+    
+    # --- Build the map ---
+    if df.empty:
+        st.warning("No points match this filter.")
+    else:
+        center = [df["Latitude"].mean(), df["Longitude"].mean()]
+        m = folium.Map(location=center, zoom_start=4, tiles="CartoDB positron")
 
     for _, r in df.iterrows():
         name = f"{r['First Name']} {r['Last Name']}".strip()
